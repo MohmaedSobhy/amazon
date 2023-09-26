@@ -1,4 +1,4 @@
-import 'package:amazon/Feature/login/screens/login_screen.dart';
+import 'package:amazon/Feature/Auth/screens/authincation_screen.dart';
 import 'package:amazon/core/routes/routes_name.dart';
 import 'package:flutter/material.dart';
 

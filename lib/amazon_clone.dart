@@ -1,3 +1,4 @@
+import 'package:amazon/core/routes/app_route.dart';
 import 'package:amazon/core/theme/app_color.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -9,12 +10,12 @@ class AmazonApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
+      onGenerateRoute: AppRoute.generateRouet,
       theme: ThemeData(
-        useMaterial3: true,
-        colorScheme: ColorScheme.light(
+        colorScheme: const ColorScheme.light(
           primary: AppColor.secondaryColor,
         ),
-        appBarTheme: AppBarTheme(
+        appBarTheme: const AppBarTheme(
           elevation: 0.0,
           iconTheme: IconThemeData(
             color: Colors.black,
