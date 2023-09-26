@@ -33,7 +33,7 @@ class CustomeTextFormField extends StatelessWidget {
       obscureText: (obscure == null) ? false : obscure!,
       decoration: InputDecoration(
         hintText: hint,
-        hintStyle: TextStyle(
+        hintStyle: const TextStyle(
           color: Colors.black38,
         ),
         focusedBorder: const OutlineInputBorder(

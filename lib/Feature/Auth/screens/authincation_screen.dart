@@ -8,7 +8,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 class AuthincationScreen extends StatelessWidget {
   final String value = 'Create';
-  final bool check = true;
+
   const AuthincationScreen({super.key});
 
   @override
@@ -50,13 +50,14 @@ class AuthincationScreen extends StatelessWidget {
                     ),
                   ),
                   Visibility(
-                    visible: check,
+                    visible: AuthincationCubit.get(context).isSignin,
                     child: const SignUpFormView(),
                   ),
                   ListTile(
-                    tileColor: (AuthincationCubit.get(context).isSignin)
-                        ? AppColor.backgroundColor
-                        : AppColor.greyBackgroundCOlor,
+                    tileColor:
+                        (AuthincationCubit.get(context).isSignin == false)
+                            ? AppColor.backgroundColor
+                            : AppColor.greyBackgroundCOlor,
                     leading: Radio(
                       activeColor: AppColor.secondaryColor,
                       value: 'Sigin',
@@ -73,7 +74,7 @@ class AuthincationScreen extends StatelessWidget {
                     ),
                   ),
                   Visibility(
-                    visible: (AuthincationCubit.get(context).isSignin),
+                    visible: (AuthincationCubit.get(context).isSignin == false),
                     child: const SignInFormView(),
                   ),
                 ],
