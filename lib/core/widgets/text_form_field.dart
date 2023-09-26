@@ -34,7 +34,7 @@ class CustomeTextFormField extends StatelessWidget {
       decoration: InputDecoration(
         hintText: hint,
         hintStyle: TextStyle(
-          color: Theme.of(context).primaryColor,
+          color: Colors.black38,
         ),
         focusedBorder: const OutlineInputBorder(
           borderSide: BorderSide(

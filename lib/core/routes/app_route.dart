@@ -8,7 +8,7 @@ class AppRoute {
       case RoutesNames.login:
         return MaterialPageRoute(
           builder: (_) {
-            return const LoginScreen();
+            return const AuthincationScreen();
           },
         );
     }

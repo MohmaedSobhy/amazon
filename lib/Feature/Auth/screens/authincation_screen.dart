@@ -1,12 +1,15 @@
+import 'package:amazon/Feature/Auth/controller/authincation_cubit.dart';
+import 'package:amazon/Feature/Auth/controller/authincation_state.dart';
+import 'package:amazon/Feature/Auth/views/sign_in_form.dart';
+import 'package:amazon/Feature/Auth/views/sign_up_form.dart';
 import 'package:amazon/core/theme/app_color.dart';
-import 'package:amazon/core/widgets/custom_buttom.dart';
-import 'package:amazon/core/widgets/text_form_field.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
-class LoginScreen extends StatelessWidget {
+class AuthincationScreen extends StatelessWidget {
   final String value = 'Create';
   final bool check = true;
-  const LoginScreen({super.key});
+  const AuthincationScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -15,81 +18,67 @@ class LoginScreen extends StatelessWidget {
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.all(8.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const Text(
-                'Welcome',
-                style: TextStyle(
-                  fontSize: 22,
-                  fontWeight: FontWeight.w500,
-                ),
-              ),
-              ListTile(
-                tileColor: (check)
-                    ? AppColor.backgroundColor
-                    : AppColor.greyBackgroundCOlor,
-                leading: Radio(
-                  activeColor: AppColor.secondaryColor,
-                  value: 'Create',
-                  groupValue: value,
-                  onChanged: (value) {},
-                ),
-                title: const Text(
-                  'Create Account',
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ),
-              Visibility(
-                visible: true,
-                child: Container(
-                  color: AppColor.backgroundColor,
-                  padding: const EdgeInsets.all(8),
-                  child: Form(
-                    child: Column(
-                      children: [
-                        CustomeTextFormField(
-                          controller: TextEditingController(),
-                          hint: 'Name',
-                          textInputType: TextInputType.name,
-                        ),
-                        CustomeTextFormField(
-                          controller: TextEditingController(),
-                          hint: 'Email',
-                          textInputType: TextInputType.emailAddress,
-                        ),
-                        CustomeTextFormField(
-                          controller: TextEditingController(),
-                          hint: 'password',
-                          textInputType: TextInputType.emailAddress,
-                          obscure: true,
-                        ),
-                        CustomButton(
-                          text: "Sign UP",
-                          onTap: () {},
-                        )
-                      ],
+          child: BlocConsumer<AuthincationCubit, AuthincationState>(
+            listener: (context, state) {},
+            builder: (context, state) {
+              return ListView(
+                children: [
+                  const Text(
+                    'Welcome',
+                    style: TextStyle(
+                      fontSize: 22,
+                      fontWeight: FontWeight.w500,
                     ),
                   ),
-                ),
-              ),
-              ListTile(
-                leading: Radio(
-                  activeColor: AppColor.secondaryColor,
-                  value: 'Sigin',
-                  groupValue: value,
-                  onChanged: (value) {},
-                ),
-                title: const Text(
-                  'Sign...in',
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
+                  ListTile(
+                    tileColor: (AuthincationCubit.get(context).isSignin)
+                        ? AppColor.backgroundColor
+                        : AppColor.greyBackgroundCOlor,
+                    leading: Radio(
+                      activeColor: AppColor.secondaryColor,
+                      value: 'Create',
+                      groupValue: value,
+                      onChanged: (value) {
+                        AuthincationCubit.get(context).authincation();
+                      },
+                    ),
+                    title: const Text(
+                      'Create Account',
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
                   ),
-                ),
-              )
-            ],
+                  Visibility(
+                    visible: check,
+                    child: const SignUpFormView(),
+                  ),
+                  ListTile(
+                    tileColor: (AuthincationCubit.get(context).isSignin)
+                        ? AppColor.backgroundColor
+                        : AppColor.greyBackgroundCOlor,
+                    leading: Radio(
+                      activeColor: AppColor.secondaryColor,
+                      value: 'Sigin',
+                      groupValue: value,
+                      onChanged: (value) {
+                        AuthincationCubit.get(context).authincation();
+                      },
+                    ),
+                    title: const Text(
+                      'Sign...in',
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+                  Visibility(
+                    visible: (AuthincationCubit.get(context).isSignin),
+                    child: const SignInFormView(),
+                  ),
+                ],
+              );
+            },
           ),
         ),
       ),

@@ -1,6 +1,7 @@
-part of 'authincation_cubit.dart';
+abstract class AuthincationState {}
 
-@immutable
-sealed class AuthincationState {}
+class AuthincationInitial extends AuthincationState {}
 
-final class AuthincationInitial extends AuthincationState {}
+class SignInState extends AuthincationState {}
+
+class SignUpState extends AuthincationState {}
