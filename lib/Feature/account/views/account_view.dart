@@ -116,7 +116,7 @@ class AccountView extends StatelessWidget {
               ),
               const Divider(
                 color: Colors.grey,
-                thickness: 4,
+                thickness: 3,
               ),
             ],
           ),
