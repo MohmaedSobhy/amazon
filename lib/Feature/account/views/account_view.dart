@@ -1,5 +1,4 @@
-import 'dart:ui';
-
+import 'package:amazon/Feature/account/widgets/custom_button.dart';
 import 'package:amazon/core/constants.dart';
 import 'package:amazon/core/theme/app_color.dart';
 import 'package:flutter/material.dart';
@@ -81,6 +80,43 @@ class AccountView extends StatelessWidget {
                     ],
                   ),
                 ),
+              ),
+              Column(
+                children: [
+                  const SizedBox(height: 10),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      AccountViewCustomButton(
+                        onPressed: () {},
+                        text: 'Your Orders',
+                      ),
+                      AccountViewCustomButton(
+                        onPressed: () {},
+                        text: 'Buy Again',
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: 10),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      AccountViewCustomButton(
+                        onPressed: () {},
+                        text: 'Your Account',
+                      ),
+                      AccountViewCustomButton(
+                        onPressed: () {},
+                        text: 'Your Lists',
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: 10),
+                ],
+              ),
+              const Divider(
+                color: Colors.grey,
+                thickness: 4,
               ),
             ],
           ),
