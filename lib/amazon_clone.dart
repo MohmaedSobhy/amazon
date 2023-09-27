@@ -1,5 +1,5 @@
 import 'package:amazon/Feature/Auth/controller/authincation_cubit.dart';
-import 'package:amazon/core/routes/app_route.dart';
+import 'package:amazon/Feature/Auth/screens/authincation_screen.dart';
 import 'package:amazon/core/theme/app_color.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -16,7 +16,6 @@ class AmazonApp extends StatelessWidget {
       ],
       child: GetMaterialApp(
         debugShowCheckedModeBanner: false,
-        onGenerateRoute: AppRoute.generateRouet,
         theme: ThemeData(
           colorScheme: const ColorScheme.light(
             primary: AppColor.secondaryColor,
@@ -28,6 +27,7 @@ class AmazonApp extends StatelessWidget {
             ),
           ),
         ),
+        home: const AuthincationScreen(),
       ),
     );
   }
